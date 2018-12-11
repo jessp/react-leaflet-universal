@@ -4,13 +4,11 @@ import { PropTypes } from 'prop-types';
 const { node, oneOfType, func } = PropTypes;
 
 export default function decorate(componentName) {
-	const displayName = `LeafletUniv${componentName}`;
 
 	class Decorated extends Component {
 		constructor(props) {
 			super(props);
 			this.state = { loaded: false };
-			this.constructor.displayName = displayName;
 		}
 
 		componentDidMount() {
@@ -33,7 +31,6 @@ export default function decorate(componentName) {
 		}
 	}
 
-	Decorated.displayName = displayName;
 	Decorated.propTypes = {
 		children: oneOfType([node, func]),
 		leafletRef: func
